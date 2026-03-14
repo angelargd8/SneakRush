@@ -4,19 +4,19 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PickUpObject : MonoBehaviour
 {
-    [Header("Data")]
+    [Header("Pickup Data")]
     [SerializeField] private TreasurePickupData pickUpData;
 
     private SpriteRenderer spriteRenderer;
-    private Collider2D col2D;
-    private bool collected = false;
+    private Collider2D objectCollider;
+    private bool isCollected = false;
 
     public TreasurePickupData Data => pickUpData;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        col2D = GetComponent<Collider2D>();
+        objectCollider = GetComponent<Collider2D>();
         ApplyData();
     }
 
@@ -45,11 +45,16 @@ public class PickUpObject : MonoBehaviour
 
     public void TryCollect()
     {
-        if (collected) return;
+        if (isCollected) return;
         if (pickUpData == null) return;
         if (!pickUpData.canBeCollected) return;
 
-        collected = true;
+        isCollected = true;
+
+        if (objectCollider != null)
+        {
+            objectCollider.enabled = false;
+        }
 
         EventManager.TriggerPickupCollected(this);
 
