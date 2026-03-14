@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1f8bfb38cd56840aa248efba6a0b7f, type: 3}
   m_Name: Emerald
   m_EditorClassIdentifier: Assembly-CSharp::TreasurePickupData
-  PickUpId: 
-  PickUpName: 
-  Icon: {fileID: 0}
+  pickUpId: emerald
+  pickUpName: emerald
+  icon: {fileID: 5572106136496690981, guid: 10830749eae772943a84554238dd1b13, type: 3}
   canBeCollected: 1
+  pickUpType: 2
+  scoreValue: 100
+  coinValue: 80
+  isRare: 0
   weight: 1
   pickupSound: {fileID: 0}
-  pickupType: 0
-  scoreValue: 10
-  coinValue: 0
-  isRare: 0

@@ -64,8 +64,10 @@
     <Compile Include="Assets\PickUpType.cs" />
     <Compile Include="Assets\PickUpData.cs" />
     <Compile Include="Assets\TreasurePickupData.cs" />
+    <Compile Include="Assets\PickUpObject.cs" />
     <Compile Include="Assets\EventManager.cs" />
     <Compile Include="Assets\LevelManager.cs" />
+    <Compile Include="Assets\PickUpDebugListener.cs" />
     <Compile Include="Assets\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>

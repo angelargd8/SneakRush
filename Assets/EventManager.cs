@@ -1,16 +1,13 @@
+using System;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static Action<PickUpObject> OnPickupCollected;
 
-    // Update is called once per frame
-    void Update()
+    public static void  TriggerPickupCollected(PickUpObject pickUpObject)
     {
-        
+        Debug.Log($"EVENT -> Pickup collected: {pickUpObject.Data.pickUpName}");
+        OnPickupCollected?.Invoke(pickUpObject);
     }
 }

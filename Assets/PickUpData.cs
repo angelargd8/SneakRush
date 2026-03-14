@@ -4,20 +4,13 @@ using UnityEngine;
 public class PickUpData : ScriptableObject
 {
     [Header("Basic Info")]
-    public string PickUpId;
-    public string PickUpName;
-    
+    public string pickUpId;
+    public string pickUpName;
 
     [Header("Visuals")]
-    public Sprite Icon;
+    public Sprite icon;
 
-    [Header("gameplay")]
+    [Header("Gameplay")]
     public bool canBeCollected = true;
-    public float weight = 1f;
-
-    [Header("Audio SFX")]
-    public AudioClip pickupSound;
-
-
 
 }
