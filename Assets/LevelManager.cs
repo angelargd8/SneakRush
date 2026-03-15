@@ -1,4 +1,7 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public float TimeRemaining => timeRemaining;
     public bool LevelActive => levelActive;
 
+    private List<PickUpObject> pickups; 
 
 
 
@@ -46,6 +50,12 @@ public class LevelManager : MonoBehaviour
         timeRemaining = levelDuration;
         levelActive = true;
 
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.ClearInventory();
+        }
+
+
         if (pickupSpawner != null)
         {
             pickupSpawner.SpawnRandomPickups();
@@ -66,5 +76,17 @@ public class LevelManager : MonoBehaviour
     }
 
 
+    //private void PickupType(PickUpObject pickup)
+    //{
+    //    if(pickup.shouldAddToInventory)
+    //       AddToInventory(pickup);
+    //}
+
+    
+
+    //private void AddToInventory(PickUpObject pickup)
+    //{
+    //    pickups.Add(pickup);
+    //}
 
 }

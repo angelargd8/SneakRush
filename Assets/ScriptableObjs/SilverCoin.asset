@@ -19,6 +19,6 @@ MonoBehaviour:
   pickUpType: 1
   scoreValue: 50
   coinValue: 10
-  isRare: 0
   weight: 25
+  addToInventory: 0
   pickupSound: {fileID: 0}

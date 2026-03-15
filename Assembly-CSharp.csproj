@@ -64,11 +64,14 @@
     <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\PickUpType.cs" />
     <Compile Include="Assets\PickUpData.cs" />
+    <Compile Include="Assets\InventoryManager.cs" />
     <Compile Include="Assets\TreasurePickupData.cs" />
     <Compile Include="Assets\PickUpObject.cs" />
     <Compile Include="Assets\EventManager.cs" />
+    <Compile Include="Assets\InventoryItem.cs" />
     <Compile Include="Assets\LevelManager.cs" />
     <Compile Include="Assets\UIManager.cs" />
+    <Compile Include="Assets\InventoryItemUI.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\PickUpClickManager.cs" />
     <Compile Include="Assets\PickUpSpawner.cs" />

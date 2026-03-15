@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider2D))]
+
 public class PickUpObject : MonoBehaviour
 {
     [Header("Pickup Data")]
@@ -19,6 +20,8 @@ public class PickUpObject : MonoBehaviour
     public TreasurePickupData Data => pickUpData;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
     public Collider2D ObjectCollider => objectCollider;
+
+    //public bool shouldAddToInventory { get {  return shouldAddToInventory; } }
 
     private void Awake()
     {
@@ -110,6 +113,12 @@ public class PickUpObject : MonoBehaviour
             ScoreManager.Instance.AddPickup(pickUpData);
         }
 
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.AddItem(pickUpData);
+        }
+
+        EventManager.TriggerPickupCollected(this);
         Destroy(gameObject);
     }
 }

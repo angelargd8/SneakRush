@@ -7,9 +7,9 @@ public class TreasurePickupData : PickUpData
     public PickUpType pickUpType;
     public int scoreValue = 10;
     public int coinValue = 0;
-    public bool isRare = false;
     public float weight = 1f;
-
+    public bool addToInventory = true;
+    
     [Header("Audio SFX")]
     public AudioClip pickupSound;
 }
