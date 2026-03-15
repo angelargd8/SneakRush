@@ -20,5 +20,5 @@ MonoBehaviour:
   scoreValue: 500
   coinValue: 500
   isRare: 1
-  weight: 1
+  weight: 2
   pickupSound: {fileID: 0}

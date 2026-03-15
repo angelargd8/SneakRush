@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: -7322986402372418462, guid: 10830749eae772943a84554238dd1b13, type: 3}
   canBeCollected: 1
   pickUpType: 4
-  scoreValue: 100
-  coinValue: 100
+  scoreValue: 200
+  coinValue: 200
   isRare: 0
-  weight: 1
+  weight: 5
   pickupSound: {fileID: 0}

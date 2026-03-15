@@ -12,6 +12,8 @@ public class PickUpObject : MonoBehaviour
     private bool isCollected = false;
 
     public TreasurePickupData Data => pickUpData;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+    public Collider2D ObjectCollider => objectCollider;
 
     private void Awake()
     {
@@ -38,11 +40,6 @@ public class PickUpObject : MonoBehaviour
         gameObject.name = pickUpData.pickUpName;
     }
 
-    private void OnMouseDown()
-    {
-        TryCollect();
-    }
-
     public void TryCollect()
     {
         if (isCollected) return;
@@ -57,7 +54,6 @@ public class PickUpObject : MonoBehaviour
         }
 
         EventManager.TriggerPickupCollected(this);
-
         Destroy(gameObject);
     }
 }
