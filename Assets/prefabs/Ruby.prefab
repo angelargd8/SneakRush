@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5478184674715439632}
   - component: {fileID: 3039572854971098757}
-  - component: {fileID: -5427118879392658304}
   - component: {fileID: 8339500289784301748}
+  - component: {fileID: -9186585609748502502}
   m_Layer: 0
   m_Name: ruby
   m_TagString: Untagged
@@ -93,8 +93,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &-5427118879392658304
-BoxCollider2D:
+--- !u!114 &8339500289784301748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234203696500514141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f559df18da682c4f90fd81c5b0b09e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpObject
+  pickUpData: {fileID: 11400000, guid: 77e570d925aec3643bda7162d45a2382, type: 2}
+  minBlockArea: 0.01
+--- !u!60 &-9186585609748502502
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,18 +151,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.17, y: 0.13}
-  m_EdgeRadius: 0
---- !u!114 &8339500289784301748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234203696500514141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f559df18da682c4f90fd81c5b0b09e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickUpObject
-  pickUpData: {fileID: 11400000, guid: 77e570d925aec3643bda7162d45a2382, type: 2}
+  m_Points:
+    m_Paths:
+    - - {x: -0.085, y: 0.065}
+      - {x: -0.085, y: -0.005}
+      - {x: -0.035, y: -0.065}
+      - {x: 0.024999999, y: -0.065}
+      - {x: 0.085, y: -0.015}
+      - {x: 0.085, y: 0.065}
+  m_UseDelaunayMesh: 1

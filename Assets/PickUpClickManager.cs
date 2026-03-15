@@ -16,20 +16,20 @@ public class PickUpClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            TryCollectTopPickupUnderMouse();
+            HandleClick();
         }
     }
 
-    private void TryCollectTopPickupUnderMouse()
+    private void HandleClick()
     {
-        if (mainCamera == null) return;
-
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 point = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 point = new Vector2(mouseWorld.x, mouseWorld.y);
 
         Collider2D[] hits = Physics2D.OverlapPointAll(point);
 
-        if (hits == null || hits.Length == 0) return;
+        //Debug.Log("Hits encontrados: " + hits.Length);
+
+        if (hits.Length == 0) return;
 
         PickUpObject topPickup = null;
         int highestSortingOrder = int.MinValue;
@@ -38,19 +38,22 @@ public class PickUpClickManager : MonoBehaviour
         {
             PickUpObject pickup = hit.GetComponent<PickUpObject>();
             if (pickup == null) continue;
-            if (pickup.SpriteRenderer == null) continue;
 
-            int currentOrder = pickup.SpriteRenderer.sortingOrder;
+            int sortingOrder = pickup.SpriteRenderer.sortingOrder;
+            //Debug.Log($"Pickup: {pickup.name} | sortingOrder: {sortingOrder}");
 
-            if (currentOrder > highestSortingOrder)
+            if (sortingOrder > highestSortingOrder)
             {
-                highestSortingOrder = currentOrder;
+                highestSortingOrder = sortingOrder;
                 topPickup = pickup;
             }
         }
 
         if (topPickup != null)
         {
+            bool blocked = topPickup.IsBlockedByAnotherPickup();
+            //Debug.Log($"Se intentó recolectar: {topPickup.name} | blocked: {blocked}");
+
             topPickup.TryCollect();
         }
     }

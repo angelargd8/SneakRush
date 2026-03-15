@@ -61,12 +61,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\PickUpType.cs" />
     <Compile Include="Assets\PickUpData.cs" />
     <Compile Include="Assets\TreasurePickupData.cs" />
     <Compile Include="Assets\PickUpObject.cs" />
     <Compile Include="Assets\EventManager.cs" />
     <Compile Include="Assets\LevelManager.cs" />
+    <Compile Include="Assets\UIManager.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\PickUpClickManager.cs" />
     <Compile Include="Assets\PickUpSpawner.cs" />
     <Compile Include="Assets\PickUpDebugListener.cs" />

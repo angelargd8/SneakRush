@@ -7,7 +7,7 @@ public class PickUpSpawner : MonoBehaviour
     [SerializeField] private Transform spawnParent;
     [SerializeField] private Vector2 spawnAreaMin = new Vector2(-5.5f, -4.5f);
     [SerializeField] private Vector2 spawnAreaMax = new Vector2(9f, 1f);
-    [SerializeField] private int amountToSpawn = 60;
+    [SerializeField] private int amountToSpawn = 90;
 
     [Header("Pickup Prefabs Pool")]
     [SerializeField] private List<PickUpObject> pickupPrefabs = new();
@@ -26,25 +26,27 @@ public class PickUpSpawner : MonoBehaviour
 
         if (pickupPrefabs == null || pickupPrefabs.Count == 0)
         {
-            Debug.LogWarning("PickUpSpawner: no hay prefabs asignados en pickupPrefabs.");
+            Debug.LogWarning("no hay prefabs asignados");
             return;
         }
 
         for (int i = 0; i < amountToSpawn; i++)
         {
             PickUpObject selectedPrefab = GetWeightedRandomPrefab();
+            if (selectedPrefab == null) continue;
 
-            if (selectedPrefab == null)
-            {
-                Debug.LogWarning("PickUpSpawner: no se pudo seleccionar un prefab válido.");
-                continue;
-            }
+            Vector2 randomLocalPosition = new Vector2(
+                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
+            );
 
-            Vector2 randomPosition = GetRandomSpawnPosition();
+            Vector3 spawnWorldPosition = spawnParent != null
+                ? spawnParent.TransformPoint(randomLocalPosition)
+                : new Vector3(randomLocalPosition.x, randomLocalPosition.y, 0f);
 
             PickUpObject instance = Instantiate(
                 selectedPrefab,
-                randomPosition,
+                spawnWorldPosition,
                 Quaternion.identity,
                 spawnParent
             );
@@ -64,14 +66,16 @@ public class PickUpSpawner : MonoBehaviour
 
         foreach (PickUpObject prefab in pickupPrefabs)
         {
-            if (!IsValidPrefab(prefab)) continue;
+            if (prefab == null) continue;
+            if (prefab.Data == null) continue;
+            if (prefab.Data.weight <= 0f) continue;
 
             totalWeight += prefab.Data.weight;
         }
 
         if (totalWeight <= 0f)
         {
-            Debug.LogWarning("PickUpSpawner: el peso total es 0. Revisa los weight de tus ScriptableObjects.");
+            //Debug.LogWarning("PickUpSpawner: el peso total es 0.");
             return null;
         }
 
@@ -80,7 +84,9 @@ public class PickUpSpawner : MonoBehaviour
 
         foreach (PickUpObject prefab in pickupPrefabs)
         {
-            if (!IsValidPrefab(prefab)) continue;
+            if (prefab == null) continue;
+            if (prefab.Data == null) continue;
+            if (prefab.Data.weight <= 0f) continue;
 
             accumulatedWeight += prefab.Data.weight;
 
@@ -90,38 +96,7 @@ public class PickUpSpawner : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < pickupPrefabs.Count; i++)
-        {
-            if (IsValidPrefab(pickupPrefabs[i]))
-            {
-                return pickupPrefabs[i];
-            }
-        }
-
         return null;
-    }
-
-    private Vector2 GetRandomSpawnPosition()
-    {
-        float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
-        float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
-
-        if (spawnParent != null)
-        {
-            Vector3 worldPosition = spawnParent.TransformPoint(new Vector3(randomX, randomY, 0f));
-            return worldPosition;
-        }
-
-        return new Vector2(randomX, randomY);
-    }
-
-    private bool IsValidPrefab(PickUpObject prefab)
-    {
-        if (prefab == null) return false;
-        if (prefab.Data == null) return false;
-        if (prefab.Data.weight <= 0f) return false;
-
-        return true;
     }
 
     public void ClearSpawnedPickups()

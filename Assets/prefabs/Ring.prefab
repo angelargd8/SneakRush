@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2324504140430652379}
   - component: {fileID: 213672991505385122}
-  - component: {fileID: 8868122932620160631}
   - component: {fileID: -6166214791593293852}
+  - component: {fileID: 3244643574390013741}
   m_Layer: 0
   m_Name: ring
   m_TagString: Untagged
@@ -93,8 +93,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &8868122932620160631
-BoxCollider2D:
+--- !u!114 &-6166214791593293852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057177491847460743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f559df18da682c4f90fd81c5b0b09e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpObject
+  pickUpData: {fileID: 11400000, guid: e145f922df3af3947834a5f1c2a225a2, type: 2}
+  minBlockArea: 0.01
+--- !u!60 &3244643574390013741
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,18 +151,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.13, y: 0.17}
-  m_EdgeRadius: 0
---- !u!114 &-6166214791593293852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5057177491847460743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f559df18da682c4f90fd81c5b0b09e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickUpObject
-  pickUpData: {fileID: 11400000, guid: e145f922df3af3947834a5f1c2a225a2, type: 2}
+  m_Points:
+    m_Paths:
+    - - {x: -0.035, y: 0.085}
+      - {x: -0.065, y: 0.074999996}
+      - {x: -0.065, y: -0.044999998}
+      - {x: -0.035, y: -0.085}
+      - {x: 0.055, y: -0.085}
+      - {x: 0.065, y: -0.065}
+      - {x: 0.065, y: 0.085}
+  m_UseDelaunayMesh: 1
