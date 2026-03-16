@@ -8,20 +8,22 @@ public class LevelManager : MonoBehaviour
     [Header("Level Settings")]
     [SerializeField] private float levelDuration = 60f;
     [SerializeField] private PickUpSpawner pickupSpawner;
+    [SerializeField] AudioClip ambienceClip;
 
     private float timeRemaining;
     private bool levelActive = false;
 
     public float TimeRemaining => timeRemaining;
     public bool LevelActive => levelActive;
-
-    private List<PickUpObject> pickups; 
+    
+    //private List<PickUpObject> pickups; 
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioManager.Instance.PlayAmbience(ambienceClip);
         StartLevel();
     }
 
@@ -71,22 +73,18 @@ public class LevelManager : MonoBehaviour
 
         levelActive = false;
         EventManager.TriggerLevelEnded();
-
         Debug.Log("Level ended");
+
+        //creo que no es la mejor practica porque seria mejor en el game manager, pero asi lo dejare por el momento
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.FinishGame();
+        }
+
+
+
     }
 
 
-    //private void PickupType(PickUpObject pickup)
-    //{
-    //    if(pickup.shouldAddToInventory)
-    //       AddToInventory(pickup);
-    //}
-
-    
-
-    //private void AddToInventory(PickUpObject pickup)
-    //{
-    //    pickups.Add(pickup);
-    //}
 
 }

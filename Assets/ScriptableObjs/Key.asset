@@ -19,6 +19,6 @@ MonoBehaviour:
   pickUpType: 6
   scoreValue: 200
   coinValue: 100
-  isRare: 0
   weight: 3
-  pickupSound: {fileID: 0}
+  addToInventory: 1
+  pickupSound: {fileID: 8300000, guid: 64f1842539a878443a59450a551fc563, type: 3}

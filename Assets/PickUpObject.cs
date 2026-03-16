@@ -117,8 +117,15 @@ public class PickUpObject : MonoBehaviour
         {
             InventoryManager.Instance.AddItem(pickUpData);
         }
+        if (pickUpData.pickupSound != null)
+        {
+            AudioSource.PlayClipAtPoint(pickUpData.pickupSound, transform.position);
+        }
+
 
         EventManager.TriggerPickupCollected(this);
+
+
         Destroy(gameObject);
     }
 }

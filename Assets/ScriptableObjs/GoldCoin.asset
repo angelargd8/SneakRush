@@ -21,4 +21,4 @@ MonoBehaviour:
   coinValue: 10
   weight: 40
   addToInventory: 0
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 8715e2c6ddfc58048bf0f41f985bf449, type: 3}
