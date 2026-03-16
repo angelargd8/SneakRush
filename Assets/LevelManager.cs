@@ -107,12 +107,18 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Level ended");
 
         //creo que no es la mejor practica porque seria mejor en el game manager, pero asi lo dejare por el momento
+        //if (GameManager.instance != null)
+        //{
+        //    Debug.Log("FINISH GAME");
+        //    GameManager.instance.FinishGame();
+        //}
         if (GameManager.instance != null)
         {
-            Debug.Log("FINISH GAME");
-            GameManager.instance.FinishGame();
-        }
+            int finalScore = ScoreManager.Instance != null ? ScoreManager.Instance.Score : 0;
+            int finalMoney = ScoreManager.Instance != null ? ScoreManager.Instance.Money : 0;
 
+            GameManager.instance.FinishGame(finalScore, finalMoney);
+        }
 
 
     }
