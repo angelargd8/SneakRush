@@ -27,7 +27,7 @@ public class PickUpClickManager : MonoBehaviour
 
         Collider2D[] hits = Physics2D.OverlapPointAll(point);
 
-        //Debug.Log("Hits encontrados: " + hits.Length);
+        //Debug.Log("Hits: " + hits.Length);
 
         if (hits.Length == 0) return;
 

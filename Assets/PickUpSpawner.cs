@@ -20,14 +20,14 @@ public class PickUpSpawner : MonoBehaviour
 
     public List<PickUpObject> SpawnedPickups => spawnedPickups;
 
-    public void SpawnRandomPickups()
+    public int SpawnRandomPickups()
     {
         ClearSpawnedPickups();
 
         if (pickupPrefabs == null || pickupPrefabs.Count == 0)
         {
             Debug.LogWarning("no hay prefabs asignados");
-            return;
+            return 0;
         }
 
         for (int i = 0; i < amountToSpawn; i++)
@@ -58,6 +58,8 @@ public class PickUpSpawner : MonoBehaviour
 
             spawnedPickups.Add(instance);
         }
+
+        return spawnedPickups.Count;
     }
 
     private PickUpObject GetWeightedRandomPrefab()

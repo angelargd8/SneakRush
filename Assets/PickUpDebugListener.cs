@@ -16,8 +16,8 @@ public class PickUpDebugListener : MonoBehaviour
     {
         TreasurePickupData data = pickUpObject.Data;
 
-        Debug.Log(
-            $"Collected -> Name: {data.pickUpName}, Type: {data.pickUpType}, Score: {data.scoreValue}, Coins: {data.coinValue}"
-        );
+        //Debug.Log(
+        //    $"Collected -> Name: {data.pickUpName}, Type: {data.pickUpType}, Score: {data.scoreValue}, Coins: {data.coinValue}"
+        //);
     }
 }
